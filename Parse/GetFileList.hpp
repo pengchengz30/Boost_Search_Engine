@@ -13,16 +13,18 @@
 #include <string>
 #include <vector>
 
-std::pair<bool, std::vector<std::string>> getFiles(const std::string &path) {
+const char* file_location = "Data/Input";
+
+std::vector<std::string> getFiles(const std::string &path) {
     namespace fs = boost::filesystem;
     std::vector<std::string> files;
     if (!fs::exists(path)) {
         std::cerr << "Path does not exist." << std::endl;
-        return {false, files};
+        return files;
     }
     if (!fs::is_directory(path)) {
         std::cerr << "Not a directory." << std::endl;
-        return {false, files};
+        return files;
     }
     for (auto &file : fs::directory_iterator(path)) {
         if (!file.is_regular_file() || file.path().extension() != ".html") {
@@ -31,9 +33,6 @@ std::pair<bool, std::vector<std::string>> getFiles(const std::string &path) {
         files.push_back(file.path().string());
     }
 
-    return {true, files};
+    return files;
 }
 
-void parse(const std::vector<std::string> &files){
-    
-}

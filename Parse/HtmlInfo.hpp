@@ -6,9 +6,9 @@
 //
 
 #pragma once
+#include <string>
 
-class HtmlInfo {
-  public:
+struct HtmlInfo {
     template <class T1, class T2, class T3>
     HtmlInfo(T1 &&title, T2 &&content, T3 &&url)
         : title(std::forward<T1>(title)), content(std::forward<T2>(content)),
