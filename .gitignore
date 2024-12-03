@@ -33,3 +33,6 @@
 
 # macOS
 .DS_Store
+
+# Data
+/Data
